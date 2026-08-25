@@ -1,0 +1,1 @@
+t7-orchestrator skill was created via write_file (not skill_manage create), so skill_manage patch cannot find it by name. Edit it directly at ~/.hermes/profiles/team7/skills/t7/orchestrator/SKILL.md. Same applies to all t7/ agent skills created this session.

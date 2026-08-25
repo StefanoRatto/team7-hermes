@@ -1,0 +1,64 @@
+name: hermes7
+description: hermes7 — bronze gold, electric cyan, and ocean blue
+colors:
+  background: '#0a0a14'
+  banner_border: '#00d9ff'
+  banner_title: '#94e2d5'
+  banner_accent: '#00d9ff'
+  banner_dim: '#006880'
+  banner_text: '#00d9ff'
+  ui_accent: '#94e2d5'
+  ui_label: '#94e2d5'
+  ui_ok: '#4caf50'
+  ui_error: '#ef5350'
+  ui_warn: '#ffa726'
+  ui_tool: '#94e2d5'
+  ui_thinking: '#006880'
+  diff_added: '#1b3322'
+  diff_removed: '#331b22'
+  diff_added_word: '#73c991'
+  diff_removed_word: '#f47067'
+  syntax_string: '#98c379'
+  syntax_number: '#d19a66'
+  syntax_keyword: '#c678dd'
+  syntax_comment: '#5c6370'
+  prompt: '#94e2d5'
+  input_rule: '#00d9ff'
+  response_border: '#94e2d5'
+  status_bar_bg: '#060610'
+  status_bar_text: '#00b0f0'
+  status_bar_strong: '#00d9ff'
+  status_bar_dim: '#006880'
+  status_bar_good: '#8FBC8F'
+  status_bar_warn: '#94e2d5'
+  status_bar_bad: '#FF8C00'
+  status_bar_critical: '#FF6B6B'
+  session_label: '#94e2d5'
+  session_border: '#006880'
+  completion_menu_bg: '#060610'
+  completion_menu_current_bg: '#0d1f2b'
+  selection_bg: '#0d1f2b'
+  shell_dollar: '#00d9ff'
+  voice_status_bg: '#060610'
+branding:
+  agent_name: b63 on Hermes Agent
+  welcome: hermes7 online. Type your message or /help for commands.
+  goodbye: hermes7 signing off.
+  response_label: ' hermes7 '
+  prompt_symbol: ❯
+  help_header: ' hermes7 Commands'
+tool_prefix: ┊
+banner_hero: '[#94e2d5]▗▖   ▄▄▄▄ ▄▄▄▄[/]
+
+  [#94e2d5]▐▌   █       █[/]
+
+  [#94e2d5]▐▛▀▚▖█▀▀█ ▀▀▀█[/]
+
+  [#94e2d5]▐▙▄▞▘█▄▄█ ▄▄▄█[/]
+
+  [#00d9ff] [/]
+
+  [#006880]Agentic Detection & Exploitation Foundry[/]
+
+  [#94e2d5] [/]'
+banner_logo: ' '

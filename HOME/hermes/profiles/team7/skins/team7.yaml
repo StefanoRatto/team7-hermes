@@ -33,7 +33,7 @@ colors:
   syntax_comment: "#5c6370"
 
   # Prompt & rules
-  prompt: "#00b0f0"
+  prompt: "#a57c00"
   input_rule: "#00d9ff"
   response_border: "#a57c00"
 
@@ -59,7 +59,7 @@ colors:
   voice_status_bg: "#060610"
 
 branding:
-  agent_name: "hermes7 Agent"
+  agent_name: "team7 on Hermes Agent"
   welcome: "hermes7 online. Type your message or /help for commands."
   goodbye: "hermes7 signing off."
   response_label: " hermes7 "

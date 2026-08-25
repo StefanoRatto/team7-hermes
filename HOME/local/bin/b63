@@ -1,0 +1,3 @@
+#!/bin/sh
+# b63 launcher
+exec ~/.local/bin/hermes --tui -p b63 "$@"

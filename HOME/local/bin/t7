@@ -1,0 +1,3 @@
+#!/bin/sh
+# t7 launcher
+exec ~/.local/bin/hermes --tui -p team7 "$@"
