@@ -20,11 +20,11 @@ colors:
   ui_tool: "#a57c00"
   ui_thinking: "#006880"
 
-  # Diff — dark backgrounds with readable foregrounds
-  diff_added: "#1b3322"
-  diff_removed: "#331b22"
-  diff_added_word: "#73c991"
-  diff_removed_word: "#f47067"
+  # Diff — proper dark-mode: clearly-dark green/red bands + bright readable text
+  diff_added: "#1c3d2c"
+  diff_removed: "#3d1c2a"
+  diff_added_word: "#8ce99a"
+  diff_removed_word: "#ff8f8f"
 
   # Syntax — One Dark Pro inspired for readability on dark backgrounds
   syntax_string: "#98c379"
