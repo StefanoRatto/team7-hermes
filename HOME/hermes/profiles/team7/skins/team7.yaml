@@ -1,5 +1,5 @@
-name: hermes7
-description: hermes7 — bronze gold, electric cyan, and ocean blue
+name: team7
+description: team7 — bronze gold, electric cyan, and ocean blue
 
 colors:
   background: "#0a0a14"
@@ -20,11 +20,11 @@ colors:
   ui_tool: "#a57c00"
   ui_thinking: "#006880"
 
-  # Diff — proper dark-mode: clearly-dark green/red bands + bright readable text
-  diff_added: "#1c3d2c"
-  diff_removed: "#3d1c2a"
-  diff_added_word: "#8ce99a"
-  diff_removed_word: "#ff8f8f"
+  # Diff — matched to reference screenshot (2026-09-25): dark green/red bands + tinted text
+  diff_added: "#152919"
+  diff_removed: "#351719"
+  diff_added_word: "#98e491"
+  diff_removed_word: "#f1a299"
 
   # Syntax — One Dark Pro inspired for readability on dark backgrounds
   syntax_string: "#98c379"
@@ -58,13 +58,26 @@ colors:
   shell_dollar: "#00d9ff"
   voice_status_bg: "#060610"
 
+# Paired polarity blocks — force the same dark diff tokens regardless of terminal polarity
+dark_colors:
+  diff_added: "#152919"
+  diff_removed: "#351719"
+  diff_added_word: "#98e491"
+  diff_removed_word: "#f1a299"
+
+light_colors:
+  diff_added: "#152919"
+  diff_removed: "#351719"
+  diff_added_word: "#98e491"
+  diff_removed_word: "#f1a299"
+
 branding:
   agent_name: "team7 on Hermes Agent"
-  welcome: "hermes7 online. Type your message or /help for commands."
-  goodbye: "hermes7 signing off."
-  response_label: " hermes7 "
+  welcome: "team7 online. Type your message or /help for commands."
+  goodbye: "team7 signing off."
+  response_label: " team7 "
   prompt_symbol: "❯"
-  help_header: " hermes7 Commands"
+  help_header: " team7 Commands"
 
 tool_prefix: "┊"
 
