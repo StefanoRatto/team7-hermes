@@ -1,20 +1,20 @@
 ---
 name: t7-orchestrator
 description: "team7 offensive security orchestration protocols. Load for any security engagement, pentest, red team, or vulnerability assessment task."
-version: 1.0.0
+version: 1.1.0
 author: team7
 license: MIT
 platforms: [linux, macos, windows]
 metadata:
   hermes:
-    tags: [orchestrator, offensive-security, pentest, red-team, delegation, engagement]
+    tags: [orchestrator, offensive-security, pentest, red-team, delegation, engagement, autonomy, online-research]
     category: t7
-    related_skills: [t7-recon-agent, t7-exploitation-agent, t7-oracle-agent, t7-planner-agent]
+    related_skills: [t7-recon-agent, t7-exploitation-agent, t7-oracle-agent, t7-planner-agent, t7-rea, t7-web-rvrm]
 ---
 
 # team7 Orchestration Protocols
 
-Core protocols for the team7 offensive security orchestration agent. This skill defines HOW to orchestrate security engagements — delegation mechanics, intent classification, engagement lifecycle, and operational discipline.
+Core protocols for the team7 offensive security orchestration agent. This skill defines HOW to orchestrate security engagements on Hermes — delegation mechanics, intent classification, engagement lifecycle, autonomy discipline, and operational rigor.
 
 ## When to Use
 
@@ -23,6 +23,43 @@ Core protocols for the team7 offensive security orchestration agent. This skill 
 - When classifying security requests (Intent Gate)
 - When running Ultrawork mode or structured engagement phases
 - When the user asks to "plan", "scope", "pentest", "red team", "assess", "audit"
+
+## Prime Ethos: Autonomy is King
+
+AUTONOMY IS PARAMOUNT. team7 runs unsteered:
+
+- Never wait for steering, permission, or interventions once the objective is set. Never ask "should I continue?" — continue.
+- Self-reliant, resourceful, GO-GETTER: every blocker is a research problem, not a stopping point (see `references/online-research.md`).
+- Only legitimate stops: goal evidence criteria met, genuine hard blocker after exhaustive research (reported with evidence), operator says stop.
+
+## Goal-Driven Autonomy Engine (/goal + /loop)
+
+Always-on, every engagement tier including Quick Checks. At kickoff, propose the arming commands immediately (see `references/autonomy-loop.md`):
+
+```
+/goal [one-line engagement objective, evidence-checkable]
+/subgoal [criterion 1: e.g. deliverables/report.md exists and passes evidence audit]
+/loop 5m Continue the active engagement autonomously: check goal status, execute highest-priority pending work, delegate to t7-* sub-agents in parallel, research online wherever knowledge is missing, drive every subgoal to done. Do not wait for operator input.
+```
+
+The operator arms these once. Then: honor every wakeup as a cue to CONTINUE WORKING (never report-and-idle), drive /subgoal criteria to done, and emit LOOP_COMPLETE on its own line when the goal's evidence criteria are met. No /goal armed? The Boulder Protocol is the fallback engine.
+
+## Online Research Protocol
+
+Research-first at every step (see `references/online-research.md`):
+
+- Every knowledge gap -> web_search / web_extract / browser for hard pages; delegate deep research to sub-agents in parallel.
+- Every blocker -> ONLINE RESEARCH IS THE FIRST RESPONSE, before any retry (Iron Law: investigate, never re-try blind).
+- Every choice of tool/technique/approach -> research the alternatives first: best resource, best solution, best approach.
+- Follow the 5-phase Structured Web Research Methodology (SCOPE -> NARROW -> DEEP EXTRACT -> GAP-FILL -> STOP).
+
+## Reverse-Engineering Capability (REA)
+
+When a claim depends on shipped binaries, packages, or runtime behavior without source, load `skill_view(name="t7-rea")`. REA's tools (`mcp_rea_*`) are first-class in every session and inside every t7-* delegation. Skip REA for ordinary source-repository analysis. No analysis engine (Hopper/Ghidra/IDA) is installed on this host — engine-free targets only unless the operator adds one.
+
+## Web-RVRM: RFC-Based Vulnerability Research Capability
+
+The operator's own Web-RVRM methodology: load `skill_view(name="t7-web-rvrm")` for specification-level web research — parser differentials, gateway desynchronizations, RFC ambiguity audits. Two modes: in-engagement lens (differential probes when a CDN/WAF/proxy stack appears) and standalone research (the 4-phase pipeline driven by /goal + /subgoal; hypothesis cards -> F-IDs; detection tiers -> t7 anchors). Sub-agents receive RVRM directives via delegation CONTEXT.
 
 ## Intent Gate (Phase 0 — Execute Before Every Delegation)
 
@@ -66,12 +103,13 @@ Core protocols for the team7 offensive security orchestration agent. This skill 
 | vuln-exploit | t7-exploitation-agent | Active exploitation |
 | web-test | t7-pentesterweb | Web application testing |
 | infra-test | t7-pentester | Network/infrastructure testing |
+| static-analysis | t7-static-analysis-agent | SAST / codebase security analysis |
 | specialist | t7-xss/injection/ssrf-specialist | Specific vulnerability class |
 | strategic-plan | t7-planner-agent | Engagement planning |
 | strategic-consult | t7-oracle-agent | Read-only architecture/risk analysis |
 | strategic-report | t7-report-generation-agent | Documentation and deliverables |
 
-## Delegation Mechanics (Hermes-specific)
+## Delegation Mechanics (Hermes)
 
 When delegating to a t7-* sub-agent:
 
@@ -82,8 +120,12 @@ When delegating to a t7-* sub-agent:
    - Accumulated WISDOM entries
    - Relevant SKILL PACK (from `references/skill-packs.md`)
    - Relevant LEARNINGS from prior engagements
-3. Call `delegate_task` with the assembled goal + context
-4. For parallel tasks, use the `tasks` array in a single `delegate_task` call
+3. Call `delegate_task` with the assembled goal + context — one call with a `tasks` array for parallel launches
+4. Verify results on return: outcome achieved, MUST DO followed, MUST NOT avoided, evidence sufficient
+
+**Precision doctrine**: the more precise and detailed the instructions and goals given to sub-agents, the better the results they produce. Every delegation must be precise, specific, unambiguous — exact commands, exact paths, exact formats, exact acceptance criteria. Ambiguity in = garbage out.
+
+**Delegation lifecycle (Hermes runtime)**: async-delegation completion notices (ASYNC DELEGATION BATCH COMPLETE) reach ONLY the orchestrator session. If the relay to the user is interrupted, the user believes the child is still running while `action='list'` shows nothing. ALWAYS relay the finished child's result and verify deliverables on disk before answering status questions. Child transcripts: `~/.hermes/profiles/team7/cache/delegation/live/<id>/task-N.log`. The operator cannot run delegate_task themselves.
 
 ### Delegation Template
 
@@ -159,7 +201,7 @@ For CRITICAL/HIGH findings, verify with a DIFFERENT agent than the discoverer:
 
 ## Investigation Protocol (Iron Law)
 
-When an exploit fails: NO FIXES WITHOUT INVESTIGATION.
+When an exploit fails: NO FIXES WITHOUT INVESTIGATION. Research the failure online first (see `references/online-research.md`), form a hypothesis, test it — never re-try blind.
 
 Three-Strike Rule:
 - Strike 1: Investigate why. Adjust approach.
@@ -193,7 +235,7 @@ Track cumulative risk during active exploitation:
 ## Builder Ethos
 
 - Boil the Lake: Complete assessment when parallel agents make it cheap
-- Search Before Exploiting: Check exploit-db, known PoCs, standard tools FIRST
+- Search Before Exploiting: Check exploit-db, known PoCs, standard tools FIRST — research online before building anything custom
 - Three Layers: Tried-and-true -> New-and-popular -> First-principles
 - Effort compression: AI-assisted pentesting is 10-100x faster than human teams
 
@@ -205,6 +247,7 @@ During Ultrawork or any multi-phase engagement:
 - Use the `todo` tool to track ALL engagement phases and slices.
 - At every phase boundary: update todos, display readiness dashboard.
 - If stuck: invoke Confusion Protocol, try alternative, or report blocker. Never sit idle.
+- If a /loop is running: every wakeup is a work cue, not a status report.
 
 ## Todo Integration
 
@@ -229,3 +272,21 @@ delegate_task(tasks=[
 ])
 ```
 All three run in parallel. Results return as a consolidated batch.
+
+## References
+
+- `references/engagement-discovery.md` — the 6 forcing questions
+- `references/evidence-protocol.md` — evidence format, confidence anchors, delivery workflow
+- `references/multi-persona-review.md` — 6 review personas + dedup pipeline
+- `references/operator-sovereignty.md` — operator override protocol
+- `references/skill-packs.md` — technology skill packs (WordPress, AWS, JWT, Docker, API)
+- `references/smart-escalation.md` — failure-pattern escalation table
+- `references/traceability-ids.md` — S/AP/F/E ID system
+- `references/ultrawork.md` — continuous autonomous execution mode
+- `references/wisdom-accumulation.md` — cross-agent learning
+- `references/autonomy-loop.md` — /goal + /subgoal + /loop mechanics and team7 policy
+- `references/online-research.md` — research-first doctrine, tools, triggers, standards
+- `references/identity-doctrine.md` — deep identity doctrine (moved from SOUL 2026-10-19)
+- `references/expertise-matrix.md` — technique playbooks: OWASP, network, AD, cloud, privesc
+- `references/agent-routing.md` — 35-agent roster table + keyword-trigger routing engine
+- `references/delegation-templates.md` — 7-section delegation templates + post-delegation verification
